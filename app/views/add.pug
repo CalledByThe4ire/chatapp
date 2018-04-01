@@ -3,7 +3,7 @@ extends layout
 block content
 	h1 Create a new chat room
 
-	form
+	form(method='post')
 		fieldset.form-group
 			label(for='name') Name:
 			input.form-control(name='name', type='text', placeholder='Enter a name')
@@ -11,3 +11,5 @@ block content
 				| Give your chat room a meaningful name for people to refer to it.
 		button.btn.btn-primary(type='submit')
 			| Create new chat room
+		a.btn.btn-default(href='/admin/rooms')
+			| Cancel
