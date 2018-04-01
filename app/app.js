@@ -1,7 +1,7 @@
 const express = require('express');
 const reload = require('reload');
 const app = express();
-const rooms = require("./data/rooms.json");
+const rooms = require('./data/rooms.json');
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', './app/views');
@@ -22,6 +22,10 @@ app.get('/admin/rooms', (req, res) => {
         title: 'Admin Rooms',
         rooms: rooms
     });
+});
+
+app.get('/admin/rooms/add', (req, res) => {
+    res.render('add');
 });
 
 reload(app);
