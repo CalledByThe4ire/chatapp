@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const reload = require('reload');
 const app = express();
+const rooms = require("./data/rooms.json");
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', './app/views');
@@ -15,6 +16,13 @@ app.use(express.static('./app/public'));
 
 app.get('/', (req, res) => {
   res.render('index', { title: 'Home' });
+});
+
+app.get('/admin/rooms', (req, res) => {
+    res.render('rooms', {
+        title: 'Admin Rooms',
+        rooms: rooms
+    });
 });
 
 const server = http.createServer(app);
