@@ -1,5 +1,4 @@
 const express = require('express');
-const http = require('http');
 const reload = require('reload');
 const app = express();
 const rooms = require("./data/rooms.json");
@@ -25,10 +24,8 @@ app.get('/admin/rooms', (req, res) => {
     });
 });
 
-const server = http.createServer(app);
-
 reload(app);
 
-server.listen(app.get('port'), () => {
+app.listen(app.get('port'), () => {
     console.log(`Chat app listening on port ${app.get('port')}!`);
 });
