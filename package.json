@@ -21,7 +21,8 @@
     "node-uuid": "^1.4.8",
     "nodemon": "^1.17.3",
     "popper.js": "^1.14.1",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "reload": "^2.2.2"

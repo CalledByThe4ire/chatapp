@@ -1,5 +1,8 @@
 const express = require('express');
 const reload = require('reload');
+const bodyParser = require('body-parser');
+const uuidv4 = require('uuid/v4');
+
 const app = express();
 const rooms = require('./data/rooms.json');
 
@@ -11,6 +14,7 @@ app.use(express.static('node_modules/bootstrap/dist'));
 app.use(express.static('node_modules/jquery/dist'));
 app.use(express.static('node_modules/popper.js/dist'));
 app.use(express.static('./app/public'));
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 app.get('/', (req, res) => {
@@ -26,6 +30,16 @@ app.get('/admin/rooms', (req, res) => {
 
 app.get('/admin/rooms/add', (req, res) => {
     res.render('add');
+});
+
+app.post('/admin/rooms/add', (req, res) => {
+    const room = {
+        name: req.body.name,
+        id: uuidv4()
+    }
+
+    rooms.push(room);
+    res.redirect('/admin/rooms/');
 });
 
 reload(app);
