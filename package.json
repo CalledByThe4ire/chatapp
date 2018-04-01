@@ -1,0 +1,27 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "Basic chat built with express.js",
+  "main": "app/app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CalledByThe4ire/chatapp.git"
+  },
+  "scripts": {
+    "start": "nodemon -e css,pug,js,json --watch app"
+  },
+  "keywords": [],
+  "author": "Andrey Karamnoff",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "nodemon": "^1.17.3",
+    "popper.js": "^1.14.1",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "reload": "^2.2.2"
+  }
+}
