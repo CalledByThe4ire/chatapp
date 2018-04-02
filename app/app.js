@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 app.get('/admin/rooms', (req, res) => {
     res.render('rooms', {
         title: 'Admin Rooms',
-        rooms: rooms
+        rooms
     });
 });
 
