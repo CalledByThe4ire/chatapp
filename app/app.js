@@ -11,10 +11,7 @@ app.set("port", process.env.PORT || 3000);
 app.set("views", "./app/views");
 app.set("view engine", "pug");
 
-app.use(express.static("node_modules/bootstrap/dist"));
-app.use(express.static("node_modules/jquery/dist"));
-app.use(express.static("node_modules/popper.js/dist"));
-app.use(express.static("node_modules/octicons/build"));
+app.use(express.static("node_modules"));
 app.use(express.static("./app/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
