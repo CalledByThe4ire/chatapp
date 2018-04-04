@@ -16,7 +16,8 @@ app.get("/", (req, res) => {
     res.render("index", { title: "Home" });
 });
 
-require("./admin")(app);
+const adminRouter = require("./admin");
+app.use("/admin", adminRouter);
 
 reload(app);
 
