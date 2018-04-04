@@ -41,6 +41,22 @@ app.post("/admin/rooms/add", (req, res) => {
     res.redirect("/admin/rooms/");
 });
 
+app.get("/admin/rooms/edit/:id", (req, res) => {
+    const roomId = req.params.id;
+    const room = rooms.find(room => room.id === roomId);
+
+    res.render("edit", {room});
+});
+
+app.post("/admin/rooms/edit/:id", (req, res) => {
+    const roomId = req.params.id;
+    const room = rooms.find(room => room.id === roomId);
+
+    room.name = req.body.name;
+
+    res.redirect("/admin/rooms/");
+});
+
 app.get("/admin/rooms/delete/:id", (req, res) => {
     const roomId = req.params.id;
     rooms = rooms.filter(room => room.id !== roomId);
