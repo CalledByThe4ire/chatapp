@@ -45,12 +45,22 @@ app.get("/admin/rooms/edit/:id", (req, res) => {
     const roomId = req.params.id;
     const room = rooms.find(room => room.id === roomId);
 
+    if (!room) {
+        res.sendStatus(404);
+        return;
+    }
+
     res.render("edit", {room});
 });
 
 app.post("/admin/rooms/edit/:id", (req, res) => {
     const roomId = req.params.id;
     const room = rooms.find(room => room.id === roomId);
+
+    if (!room) {
+        res.sendStatus(404);
+        return;
+    }
 
     room.name = req.body.name;
 
