@@ -13,6 +13,8 @@ block content
 			each room in rooms
 				tr
 					td(style='width: 50px;'): a(href=`/admin/rooms/delete/${room.id}`)
-							span !{octicons.x.toSVG()}
+						span !{octicons.x.toSVG()}
 					td= room.name
+					td(style='width: 50px;'): a(href=`/admin/rooms/edit/${room.id}`)
+						span !{octicons.pencil.toSVG()}
 					td= room.id
