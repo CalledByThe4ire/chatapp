@@ -1,59 +1,60 @@
-$(function () {
-
-    const roomId;
+$(function() {
+    let roomId;
 
     $.ajax({
         type: 'GET',
-        url: '/api/rooms'
-    }).success(function (rooms) {
-        roomId = rooms[0].id;
-        getMessages();
-        $.each(rooms, function (key, room) {
-            var a = `<a href='#' data-room-id='${room.id}' class='room list-group-item'>${room.name}</a>`;
-            $('#rooms').append(a);
-        });
-
+        url: '/api/rooms',
+        success: rooms => {
+            roomId = rooms[0].id;
+            getMessages();
+            $.each(rooms, (key, room) => {
+                const a = `<a href='#' data-room-id='${room.id}' class='room list-group-item'>${room.name}</a>`;
+                $('#rooms').append(a);
+            });
+        }
     });
 
-    $('#post').click(function () {
-        const message = {text: $('#message').val()};
+    $('#post').click(() => {
+        const message = { text: $('#message').val() };
 
         $.ajax({
             type: 'POST',
             url: `/api/rooms/${roomId}/messages`,
-            data: message
-        }).success(function() {
-            $('#message').val('');
-            getMessages();
+            data: message,
+            success: () => {
+                $('#message').val('');
+                getMessages();
+            }
         });
     });
 
-    $('body').on('click', 'a.room', function (event) {
+    $('body').on('click', 'a.room', event => {
         roomId = $(event.target).attr('data-room-id');
         getMessages();
     });
 
-    function getMessages() {
+    const getMessages = () => {
         $.ajax({
             type: 'GET',
-            url: `/api/rooms/${roomId}/messages`
-        }).success(function(data) {
-            $('#roomName').text(`Messages for ${data.room.name}`);
-            let messages = '';
-            $.each(data.messages, function(key, message) {
-                messages += message.text + '\r';
-            });
-            $('#messages').val(messages);
+            url: `/api/rooms/${roomId}/messages`,
+            success: data => {
+                $('#roomName').text(`Messages for ${data.room.name}`);
+                let messages = '';
+                $.each(data.messages, (key, message) => {
+                    messages += `${message.text}\r`;
+                });
+                $('#messages').val(messages);
+            }
         });
-    }
+    };
 
-    $('#delete').click(function(){
+    $('#delete').click(() => {
         $.ajax({
             type: 'DELETE',
-            url: `/api/rooms/${roomId}/messages`
-        }).success(function() {
-            $('#messages').val('');
+            url: `/api/rooms/${roomId}/messages`,
+            success: () => {
+                $('#messages').val('');
+            }
         });
     });
-
 });

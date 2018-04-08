@@ -13,7 +13,7 @@ app.use(express.static("./app/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-    res.render("index", { title: "Home" });
+    res.render("home", { title: "Home" });
 });
 
 const adminRouter = require("./admin");

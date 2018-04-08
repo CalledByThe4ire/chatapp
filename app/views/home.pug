@@ -2,17 +2,20 @@ extends layout
 
 block content
 
-    div.row
-        div.col-md-4
-            h3 Rooms
-            div#rooms.list-group
-        div.col-md-8
-            h3#roomName
-            textarea#messages.form-control(rows=15)
-            button.btn.btn-default#delete Delete All Messages
-            h3 Post A Message
-            textarea#message.form-control(rows=2)
-            button.btn.btn-primary#post Post
-
-    script(src='/jquery/dist/jquery.min.js')
-    script(src='/home.js')
+	div.row
+		div.col-md-4
+			h3 Rooms
+			div#rooms.list-group
+		div.col-md-8
+			h3#roomName
+			textarea#messages.form-control(rows=15)
+			button.btn.btn-default#delete Delete All Messages
+			h3 Post A Message
+			textarea#message.form-control(rows=2)
+			button.btn.btn-primary#post Post
+block scripts
+	script(src='/jquery/dist/jquery.min.js')
+	script(src='/popper.js/dist/umd/popper.min.js')
+	script(src='/bootstrap/dist/js/bootstrap.min.js')
+	script(src='/reload/reload.js')
+	script(src='/home.js')
