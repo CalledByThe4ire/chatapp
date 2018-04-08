@@ -2,7 +2,7 @@ extends layout
 
 block content
 	h1 Chat Rooms
-	a.btn.btn-primary(href='/admin/rooms/add')
+	a.btn.btn-primary(href=`${baseUrl}/rooms/add`)
 		| Create a new chat room
 	table.table.table-striped
 		thead
@@ -12,9 +12,9 @@ block content
 		tbody
 			each room in rooms
 				tr
-					td(style='width: 50px;'): a(href=`/admin/rooms/delete/${room.id}`)
+					td(style='width: 50px;'): a(href=`${baseUrl}/rooms/delete/${room.id}`)
 						span !{octicons.x.toSVG()}
 					td= room.name
-					td(style='width: 50px;'): a(href=`/admin/rooms/edit/${room.id}`)
+					td(style='width: 50px;'): a(href=`${baseUrl}/rooms/edit/${room.id}`)
 						span !{octicons.pencil.toSVG()}
 					td= room.id
