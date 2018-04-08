@@ -26,29 +26,23 @@ router
 
 router
     .route("/rooms/edit/:id")
+    .all((req, res, next) => {
+        const roomId = req.params.id;
+        const room = rooms.find(room => room.id === roomId);
+
+        if (!room) {
+            res.sendStatus(404);
+            return;
+        }
+        res.locals.room = room;
+        next();
+    })
     .get((req, res) => {
         const baseUrl = req.baseUrl;
-        const roomId = req.params.id;
-        const room = rooms.find(room => room.id === roomId);
-
-        if (!room) {
-            res.sendStatus(404);
-            return;
-        }
-
-        res.render("edit", { baseUrl, room });
+        res.render("edit", { baseUrl });
     })
     .post((req, res) => {
-        const roomId = req.params.id;
-        const room = rooms.find(room => room.id === roomId);
-
-        if (!room) {
-            res.sendStatus(404);
-            return;
-        }
-
-        room.name = req.body.name;
-
+        res.locals.room.name = req.body.name;
         res.redirect(`${req.baseUrl}/rooms/`);
     });
 
