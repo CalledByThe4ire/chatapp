@@ -1,16 +1,16 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const uuidv4 = require("uuid/v4");
-let messages = require("./data/messages.json");
+const uuidv4 = require('uuid/v4');
+let messages = require('./data/messages.json');
 
-const rooms = require("./data/rooms.json");
+const rooms = require('./data/rooms.json');
 
-router.get("/rooms", (req, res) => {
+router.get('/rooms', (req, res) => {
     res.json(rooms);
 });
 
 router
-    .route("/rooms/:roomId/messages")
+    .route('/rooms/:roomId/messages')
     .get((req, res) => {
         const roomId = req.params.roomId;
 
@@ -34,7 +34,7 @@ router
         const message = {
             roomId,
             text: req.body.text,
-            userId: "44f885e8-87e9-4911-973c-4074188f408a",
+            userId: '44f885e8-87e9-4911-973c-4074188f408a',
             id: uuidv4()
         };
         messages.push(message);
