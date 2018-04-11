@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const uuidv4 = require("uuid/v4");
-const messages = require("./data/messages.json");
+let messages = require("./data/messages.json");
 
 const rooms = require("./data/rooms.json");
 
@@ -42,6 +42,8 @@ router
     })
     .delete((req, res) => {
         const roomId = req.params.roomId;
+        messages = messages.filter(message => message.roomId !== roomId);
+        res.sendStatus(200);
     });
 
 module.exports = router;
