@@ -13,9 +13,6 @@ block content
 			h3 Post A Message
 			textarea#message.form-control(rows=2)
 			button.btn.btn-primary#post Post
-block scripts
-	script(src='/jquery/dist/jquery.min.js')
-	script(src='/popper.js/dist/umd/popper.min.js')
-	script(src='/bootstrap/dist/js/bootstrap.min.js')
-	script(src='/reload/reload.js')
+append scripts
+	script(src='/whatwg-fetch/fetch.js')
 	script(src='/home.js')

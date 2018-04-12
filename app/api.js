@@ -10,7 +10,7 @@ router.get('/rooms', (req, res) => {
 });
 
 router
-    .route('/rooms/:roomId/messages')
+    .route("/rooms/:roomId/messages")
     .get((req, res) => {
         const roomId = req.params.roomId;
 
@@ -34,7 +34,7 @@ router
         const message = {
             roomId,
             text: req.body.text,
-            userId: '44f885e8-87e9-4911-973c-4074188f408a',
+            userId: "44f885e8-87e9-4911-973c-4074188f408a",
             id: uuidv4()
         };
         messages.push(message);

@@ -1,5 +1,6 @@
 const express = require('express');
 const reload = require('reload');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -7,6 +8,8 @@ const app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', './app/views');
 app.set('view engine', 'pug');
+
+app.use(cors());
 
 app.use(express.static('node_modules'));
 app.use(express.static('./app/public'));
